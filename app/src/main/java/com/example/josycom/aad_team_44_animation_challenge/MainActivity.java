@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.josycom.aad_team_44_animation_challenge.utilities.DataManager;
+
 public class MainActivity extends AppCompatActivity {
     private Button playButton;
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuItem sports = menu.add(0, 1, 0, "Sport Quiz");
+        menu.add(0,2,1,"Current affairs quiz");
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -56,9 +59,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case 1:
+                DataManager.ourInstance = null;
                 startActivity(new Intent(this, SportQuizActivity.class));
+                return true;
+            case 2:
+                DataManager.ourInstance = null;
+                startActivity(new Intent(this,CurrentAffairsActivity.class));
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 }
-}
+

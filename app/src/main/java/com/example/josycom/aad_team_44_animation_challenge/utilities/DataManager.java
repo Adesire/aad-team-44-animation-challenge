@@ -6,11 +6,16 @@ import java.util.HashMap;
 public class DataManager {
     private ArrayList<Questions> questionsList = new ArrayList<>();
 
-    private static DataManager ourInstance = null;
-    public static DataManager getInstance(){
+    public static DataManager ourInstance = null;
+    public static DataManager getInstance(int i){
         if(ourInstance == null){
-            ourInstance = new DataManager();
-            ourInstance.initialiseQuiz();
+            if(i==0){
+                ourInstance = new DataManager();
+                ourInstance.initializeSportsQuiz();
+            }else if(i==1){
+                ourInstance = new DataManager();
+               ourInstance.initializeCurrentAffairsQuiz();
+            }
         }
         return ourInstance;
     }
@@ -19,7 +24,9 @@ public class DataManager {
         return Questions.getArrayList();
     }
 
-    private void initialiseQuiz(){
+    private void initializeSportsQuiz(){
+        Questions.getArrayList().clear();
+
         Questions question = new Questions(1,
                 "Who won the 2018 Russia world cup","sports",
                 "Spain","Belgium",
@@ -47,6 +54,40 @@ public class DataManager {
 
         Questions question5 = new Questions(6,
                 "Which team won the La Liga title 2018/2019 season","sports",
+                "chelsea","PSG",
+                "Barcelona","Monaco","Barcelona");
+    }
+
+
+    private void initializeCurrentAffairsQuiz(){
+        Questions.getArrayList().clear();
+        Questions question = new Questions(1,
+                "Current affairs question 1","currentAffairs",
+                "Spain","Belgium",
+                "Croatia","France","France");
+
+        Questions question1 = new Questions(2,
+                "Current affairs question 2","currentAffairs",
+                "Spain","USA",
+                "Croatia","France","USA");
+
+        Questions question2 = new Questions(3,
+                "Current affairs question 3","currentAffairs",
+                "Spain","Belgium",
+                "Italy","France","Italy");
+
+        Questions question3 = new Questions(4,
+                "Current affairs question 4","currentAffairs",
+                "mikel obi","neymar junior",
+                "mesut ozil","mbambe young","mbambe young");
+
+        Questions question4 = new Questions(5,
+                "Current affairs question 5","currentAffairs",
+                "Barcelona","Manchester United",
+                "Inter milan","Liverpool","Liverpool");
+
+        Questions question5 = new Questions(6,
+                "Current affairs question 6","currentAffairs",
                 "chelsea","PSG",
                 "Barcelona","Monaco","Barcelona");
     }

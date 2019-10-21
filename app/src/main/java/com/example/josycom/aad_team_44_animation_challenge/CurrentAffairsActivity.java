@@ -3,37 +3,27 @@ package com.example.josycom.aad_team_44_animation_challenge;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.animation.ObjectAnimator;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
-import android.view.animation.OvershootInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.josycom.aad_team_44_animation_challenge.utilities.DataManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SportQuizActivity extends AppCompatActivity implements View.OnClickListener{
+public class CurrentAffairsActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView mQuestionsText;
     private RadioButton mOptionsA, mOptionsB, mOptionsC, mOptionsD;
@@ -52,27 +42,27 @@ public class SportQuizActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sport_quiz);
+        setContentView(R.layout.activity_current_affairs);
 
-        mQuestionsText = findViewById(R.id.sports_custom_questions_text);
-        mOptionsPanel = findViewById(R.id.sports_options_panel);
+        mQuestionsText = findViewById(R.id.affairs_questions_text);
+        mOptionsPanel = findViewById(R.id.affairs_options_panel);
 
-        mOptionsA = findViewById(R.id.sports_option_a);
-        mOptionsB = findViewById(R.id.sports_option_b);
-        mOptionsC = findViewById(R.id.sports_option_c);
-        mOptionsD = findViewById(R.id.sports_option_d);
+        mOptionsA = findViewById(R.id.affairs_option_a);
+        mOptionsB = findViewById(R.id.affairs_option_b);
+        mOptionsC = findViewById(R.id.affairs_option_c);
+        mOptionsD = findViewById(R.id.affairs_option_d);
 
-        submitButton = findViewById(R.id.sports_submit);
+        submitButton = findViewById(R.id.affairs_submit);
         animatebuttons();
 
         answeredArrayList = new ArrayList<>();
         questionMapped = new HashMap<>();
 
-        mQuestionsMap = DataManager.getInstance(0).getQuestions();
+        mQuestionsMap = DataManager.getInstance(1).getQuestions();
         mQuestionslistSize = mQuestionsMap.size();
 
-       //set page title
-        getSupportActionBar().setTitle("SPORTS.");
+        //set page title
+        getSupportActionBar().setTitle("CURRENT AFFAIRS");
 
         mOptionsPanel.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -86,24 +76,9 @@ public class SportQuizActivity extends AppCompatActivity implements View.OnClick
         });
         startQuiz(mQuestionIndex);
         alreadyAnswered = new HashMap<>();
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.sports_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_sport_close:
-                finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    //Radio button animation not yet working
     private void animatebuttons(){
         Animation optionaAnime = new TranslateAnimation(0,100,0,0);
         Animation optionbAnime = new TranslateAnimation(0,100,100,0);
@@ -127,7 +102,6 @@ public class SportQuizActivity extends AppCompatActivity implements View.OnClick
         mOptionsD.setText(questionMapped.get("optiond"));
     }
 
-    //check to see if user selects an options then
     private void nextQuestion(){
         //when no options is selected
         if(!anyOptionChecked){
@@ -136,7 +110,7 @@ public class SportQuizActivity extends AppCompatActivity implements View.OnClick
             }else if(mQuestionIndex == mQuestionslistSize-1) {
                 startQuiz(mQuestionIndex);
             }
-        //when an option is selected
+            //when an option is selected
         }else {
             RadioButton radioButton = findViewById(mOptionsPanel.getCheckedRadioButtonId());
             String optionSelected = radioButton.getText().toString();
@@ -154,7 +128,6 @@ public class SportQuizActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    //called when no options is selected but user wants to go to next questions
     private void skipquestion(){
         if(mQuestionIndex < mQuestionslistSize - 1 ){
             mQuestionIndex = mQuestionIndex + 1;
@@ -170,22 +143,22 @@ public class SportQuizActivity extends AppCompatActivity implements View.OnClick
 
     //animate submit submit Buttons
     private void submitButtonFades(boolean visible){
-       if(visible){
-           Animation animation = new AlphaAnimation(0, 1);
-           animation.setDuration(500);
-           animation.setRepeatMode(Animation.REVERSE);
-           animation.setRepeatCount(2);
-           submitButton.setVisibility(View.VISIBLE);
-           submitButton.startAnimation(animation);
+        if(visible){
+            Animation animation = new AlphaAnimation(0, 1);
+            animation.setDuration(500);
+            animation.setRepeatMode(Animation.REVERSE);
+            animation.setRepeatCount(2);
+            submitButton.setVisibility(View.VISIBLE);
+            submitButton.startAnimation(animation);
 
-       }else{
-           Animation animationOut = new AlphaAnimation(1, 0);
-           animationOut.setDuration(500);
-           animationOut.setRepeatMode(Animation.REVERSE);
-           animationOut.setRepeatCount(1);
-           submitButton.startAnimation(animationOut);
-           submitButton.setVisibility(View.GONE);
-       }
+        }else{
+            Animation animationOut = new AlphaAnimation(1, 0);
+            animationOut.setDuration(500);
+            animationOut.setRepeatMode(Animation.REVERSE);
+            animationOut.setRepeatCount(1);
+            submitButton.startAnimation(animationOut);
+            submitButton.setVisibility(View.GONE);
+        }
     }
 
     //called when user wants to go to previous questions
@@ -292,17 +265,18 @@ public class SportQuizActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.sport_previous:
+            case R.id.affairs_previous:
                 previousquestion();
                 break;
 
-            case R.id.sports_next:
+            case R.id.affairs_next:
                 nextQuestion();
                 break;
 
-            case R.id.sports_submit:
+            case R.id.affairs_submit:
                 showScore();
                 break;
         }
     }
+
 }
