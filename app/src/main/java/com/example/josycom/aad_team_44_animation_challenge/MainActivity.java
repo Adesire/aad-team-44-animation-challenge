@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
     public void launchListOfQuizActivity(View view) {
         //Changes the colour of the Button when clicked
         playButton.setBackground(getResources().getDrawable(R.drawable.oval));
-        //startActivity(new Intent(this, ListOfQuizActivity.class));
+        startActivity(new Intent(this, ListOfQuizActivity.class));
+        overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
     }
 
     @Override

@@ -62,34 +62,34 @@ public class DataManager {
     private void initializeCurrentAffairsQuiz(){
         Questions.getArrayList().clear();
         Questions question = new Questions(1,
-                "Current affairs question 1","currentAffairs",
-                "Spain","Belgium",
-                "Croatia","France","France");
+                "Who formed the first political party in Nigeria?","currentAffairs",
+                "Herbert Macaulay","Nnamdi Azikwe",
+                "Abubakar Tafawa Balewa","Ahadu Bello","Herbert Macaulay");
 
         Questions question1 = new Questions(2,
-                "Current affairs question 2","currentAffairs",
-                "Spain","USA",
-                "Croatia","France","USA");
+                " What was the first political party in Nigeria?","currentAffairs",
+                "Advances People’s Democratic Alliance(APDA)"," Nigerian National Democratic Party(NNDP)",
+                "Social Democratic Mega Party (SDMP)","Labour Party","Nigerian National Democratic party (NNDP)");
 
         Questions question2 = new Questions(3,
-                "Current affairs question 3","currentAffairs",
-                "Spain","Belgium",
-                "Italy","France","Italy");
+                "What does the eagle in the Nigerian coat of arm represent?","currentAffairs",
+                "Patience","Dignity",
+                "Strength","Peace","Strength");
 
         Questions question3 = new Questions(4,
-                "Current affairs question 4","currentAffairs",
-                "mikel obi","neymar junior",
-                "mesut ozil","mbambe young","mbambe young");
+                "What do the two horses on the Nigerian coat of arm represent?","currentAffairs",
+                "Strength","Love",
+                "Peace","Dignity","Dignity");
 
         Questions question4 = new Questions(5,
-                "Current affairs question 5","currentAffairs",
-                "Barcelona","Manchester United",
-                "Inter milan","Liverpool","Liverpool");
+                "What was the black shield in the Nigerian coat of arm stand for?","currentAffairs",
+                "Nigerian’s Unity","Nigerian’s Freedom",
+                "Nigerian’s Fertile Soil","Nigerians Dignity","Nigerian’s fertile soil");
 
         Questions question5 = new Questions(6,
-                "Current affairs question 6","currentAffairs",
-                "chelsea","PSG",
-                "Barcelona","Monaco","Barcelona");
+                "Nigeria is divided into how many geopolitical zones?","currentAffairs",
+                "four","six",
+                "eight","twelve","six");
     }
 
 }

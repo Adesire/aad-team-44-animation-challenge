@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListOfQuizActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sports_card"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="10dp"
+        android:onClick="sportsClick">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="SPORTS"
+            android:textSize="18sp"
+            android:padding="8dp"
+            android:textStyle="bold|italic" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/affairs_card"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:elevation="4dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentEnd="true"
+        app:cardCornerRadius="10dp"
+        android:onClick="currentAffairsClick">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="CURRENT AFFAIRS"
+            android:textSize="18sp"
+            android:textStyle="bold|italic"
+            android:padding="8dp"
+            android:gravity="center"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
